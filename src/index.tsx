@@ -3,10 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../node_modules/bootstrap/dist/js/bootstrap';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
+import { ToastProvider } from 'react-toast-notifications'
 
-ReactDOM.render(
+const client = new ApolloClient({
+  uri: 'https://graphbrainz.herokuapp.com',
+  cache: new InMemoryCache()
+});
+
+ReactDOM.hydrate(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <ToastProvider>
+        <App />
+      </ToastProvider>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
