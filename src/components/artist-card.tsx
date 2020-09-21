@@ -19,7 +19,7 @@ export function ArtistCard(props: any) {
                             precision={props.artist.rating?.value ? props.artist.rating?.value : 0.5}
                             readOnly={true} />
                         <p className="card-text">{props.artist.country ? props.artist.country:"N/A"}</p>
-                        <Link to={{ pathname: "/artist-details", state: props.artist }} onClick={() => {
+                        <Link to={{ pathname: "/artist-details", state: props.artist }} className={'see-details'} onClick={() => {
                             props.artistAction.setSelectedArtist(props.artist);
                         }} >See Details</Link>
                     </div>
